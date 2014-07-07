@@ -105,6 +105,11 @@ class OperationView extends Backbone.View
   
   submitOperation: (e) ->
     e?.preventDefault()
+
+    if !confirm "Are you sure you want to execute this potentially long-running query?"
+      # user declined
+      return
+    
     # Check for errors
     form = $('.sandbox', $(@el))
     error_free = true
