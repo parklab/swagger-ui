@@ -1670,9 +1670,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
       if (e != null) {
         e.preventDefault();
       }
-      if (!confirm("Are you sure you want to execute this potentially long-running query?")) {
-        return;
-      }
+      //if (!confirm("Are you sure you want to execute this potentially long-running query?")) {
+      //  return;
+      //}
       form = $('.sandbox', $(this.el));
       error_free = true;
       form.find("input.required").each(function() {
