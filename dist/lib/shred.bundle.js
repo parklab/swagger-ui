@@ -859,8 +859,9 @@ Object.defineProperties(Request.prototype, {
   url: {
     get: function() {
       if (!this.scheme) { return null; }
-      return sprintf("%s://%s:%s%s",
-          this.scheme, this.host, this.port,
+      var colon = (this.port != "" ? ":" : "");
+      return sprintf("%s://%s%s%s%s",
+          this.scheme, this.host, colon, this.port,
           (this.proxy ? "/" : this.path) +
           (this.query ? ("?" + this.query) : ""));
     },
@@ -899,7 +900,8 @@ Object.defineProperties(Request.prototype, {
         switch(this.scheme) {
           case "https": return this._port = 443;
           case "http":
-          default: return this._port = 80;
+          //default: return this._port = 80;
+          default: return this._port = "";
         }
       }
       return this._port;
